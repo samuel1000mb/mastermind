@@ -7,18 +7,12 @@
         <link rel="stylesheet" href="style.css">
         <script src="mastermind.js"></script>
     </head>
-    <body>
+    <body onload="StartGame()">
         <div id="gridContainer">
             <h1 id="titel">MasterMind</h1>
 
             <div id="vorigePogingen">
-                <table>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                    </tr>
+                <table id="vorigePogingenTabel">
                     <tr>
                         <td>1</td>
                         <td>2</td>
@@ -29,7 +23,7 @@
             </div>
 
             <div id="score">
-                <table>
+                <table id="scoreTabel">
                     <tr>
                         <td><div class="dot redDot"></div></td>
                         <td><div class="dot redDot"></div></td>
@@ -43,26 +37,26 @@
                 <table>
                     <tr>
                         <td>
-                            <input type="text">
+                            <input type="text" id="digit1">
                         </td>
                         <td>
-                            <input type="text">
+                            <input type="text" id="digit2">
                         </td>
                         <td>
-                            <input type="text">
+                            <input type="text" id="digit3">
                         </td>
                         <td>
-                            <input type="text">
+                            <input type="text" id="digit4">
                         </td>
-                        <td><button>V</button></td>
+                        <td><button onclick="Play()">V</button></td>
                     </tr>
                 </table>
             </div>
 
-            <p id="bericht">Proficiat</p>
+            <p id="bericht"></p>
 
             <div id="speelOpnieuw">
-                <button>Speel opnieuw</button>
+                <button onclick="StartGame()">Speel opnieuw</button>
             </div>
         </div>
     </body>
