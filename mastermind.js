@@ -24,6 +24,7 @@ function ClearTables() {
 }
 
 function Play() {
+    // also check if all fields are filled in
     if (gameover == false) {
         SavePlayerNumber();
         AddPlayerNumberToPreviousAttempts();
@@ -34,7 +35,7 @@ function Play() {
     if (secretNumber == playerNumber) {
         ShowMessage("proficiat");
     }
-    else if (previousAttempts.length >= 3) {
+    else if (previousAttempts.length >= 10) {
         gameover = true;
         ShowMessage("Game Over");
     }
@@ -62,11 +63,9 @@ function SavePlayerNumber() {
 
 function Generate4DigitNumber() {
     secretNumber = Math.floor(1000 + Math.random() * 9000).toString();
-    
 }
 
 function AddPlayerNumberToPreviousAttempts() {
-
     previousAttempts.push(playerNumber);
 
     let table = document.getElementById("vorigePogingenTabel");
