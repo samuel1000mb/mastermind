@@ -8,11 +8,18 @@ let gameover = false;
 
 let currentScoreRow = null;
 
+/* 
+bugs:
+ - you can input any character (also letters) inside the input fields (is this a feature?)
+*/
+
 function StartGame() {
     gameover = false;
     ClearTables();
     ClearPlayerInput();
     Generate4DigitNumber();
+
+    // show the secret number in the log
     console.log(secretNumber);
 }
 
@@ -24,9 +31,11 @@ function ClearTables() {
 }
 
 function Play() {
-    // also check if all fields are filled in
     if (gameover == false) {
         SavePlayerNumber();
+        if (playerNumber.length < 4) {
+            return;
+        }
         AddPlayerNumberToPreviousAttempts();
 
         CheckPlayerDigits();
