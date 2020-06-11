@@ -83,6 +83,9 @@ function AddPlayerNumberToPreviousAttempts() {
     for (let i = 0; i < playerNumber.length; ++i) {
         let cell = row.insertCell(-1);
         cell.innerHTML = playerNumber[i];
+        if (playerNumber[i] === secretNumber[i]) {
+            cell.style.color = "green";
+        }
     }
     console.log(secretNumber);
 }
