@@ -34,7 +34,7 @@ function Play() {
     if (secretNumber == playerNumber) {
         ShowMessage("proficiat");
     }
-    else if (previousAttempts.length >= 3) {
+    else if (previousAttempts.length >= 10) {
         gameover = true;
         ShowMessage("Game Over");
     }
