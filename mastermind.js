@@ -8,11 +8,18 @@ let gameover = false;
 
 let currentScoreRow = null;
 
+/* 
+bugs:
+ - you can input any character (also letters) inside the input fields (is this a feature?)
+*/
+
 function StartGame() {
     gameover = false;
     ClearTables();
     ClearPlayerInput();
     Generate4DigitNumber();
+
+    // show the secret number in the log
     console.log(secretNumber);
 }
 
@@ -26,6 +33,9 @@ function ClearTables() {
 function Play() {
     if (gameover == false) {
         SavePlayerNumber();
+        if (playerNumber.length < 4) {
+            return;
+        }
         AddPlayerNumberToPreviousAttempts();
 
         CheckPlayerDigits();
@@ -62,11 +72,9 @@ function SavePlayerNumber() {
 
 function Generate4DigitNumber() {
     secretNumber = Math.floor(1000 + Math.random() * 9000).toString();
-    
 }
 
 function AddPlayerNumberToPreviousAttempts() {
-
     previousAttempts.push(playerNumber);
 
     let table = document.getElementById("vorigePogingenTabel");
@@ -75,6 +83,9 @@ function AddPlayerNumberToPreviousAttempts() {
     for (let i = 0; i < playerNumber.length; ++i) {
         let cell = row.insertCell(-1);
         cell.innerHTML = playerNumber[i];
+        if (playerNumber[i] === secretNumber[i]) {
+            cell.style.color = "green";
+        }
     }
     console.log(secretNumber);
 }
